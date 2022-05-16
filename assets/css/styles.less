@@ -1,0 +1,62 @@
+@import 'variables.less';
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    @import 'views/home.less';
+
+    .alert-area {
+        position: fixed;
+        width: 375px;
+        top: 40px;
+        right: 20px;
+        padding: 20px;
+        background-color: @--color-white;
+        border-radius: 5px;
+        cursor: default;
+        margin-right: -450px;
+        transition: all ease .6s;
+
+        &.active {
+            margin-right: 0;
+        }
+
+        .header {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+
+            .title {
+                font-size: 16px;
+                font-weight: 600;
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            .btn {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 0;
+                outline: 0;
+                font-size: 16px;
+                color: @--color-white;
+                cursor: pointer;
+                margin-top: -35px;
+            }
+        }
+
+        .middle {
+            .text {
+                font-size: 14px;
+                color: @--color-dark-variant;
+                margin: 0;
+            }
+        }
+    }
+}
