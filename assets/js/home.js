@@ -1,4 +1,4 @@
-const BASE = 'http://localhost/levy/shafiles'; 
+const BASE = 'http://localhost/projetos/shafiles'; 
 
 $(function() {
     let files;

@@ -29,7 +29,16 @@ class Share extends model
         $sql->execute();
 
         if ($sql->rowCount() > 0) {
-            $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+            $array = $sql->fetch(PDO::FETCH_ASSOC);
+
+            $sql = "SELECT * FROM files WHERE id_share = :id_share";
+            $sql = $this->db->prepare($sql);
+            $sql->bindValue(':id_share', $array['id']);
+            $sql->execute();
+
+            if ($sql->rowCount() > 0) {
+                $array['files'] = $sql->fetchAll(PDO::FETCH_ASSOC);
+            }
         }
 
         return $array;
@@ -82,9 +91,9 @@ class Share extends model
             $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($sql as $share) {
-                if (file_exists('../assets/img/' . $share['url'])) {
+                if (file_exists('assets/img/' . $share['url'])) {
                     $sql =  "SELECT * FROM files WHERE id_share = :id_share";
-                    $sql = $this->db->query($sql);
+                    $sql = $this->db->prepare($sql);
                     $sql->bindValue(':id_share', $share['id']);
                     $sql->execute();
 
@@ -92,13 +101,13 @@ class Share extends model
                         $sql = $sql->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach ($sql as $files) {
-                            if (file_exists('../assets/img/' . $share['url'] . '/' . $files['file_name'])) {
-                                unlink('../assets/img/' . $share['url'] . '/' . $files['file_name']);
+                            if (file_exists('assets/img/' . $share['url'] . '/' . $files['file_name'])) {
+                                unlink('assets/img/' . $share['url'] . '/' . $files['file_name']);
                             }
                         }
 
                         $sql = "DELETE FROM files WHERE id_share = :id_share";
-                        $sql = $this->db->query($sql);
+                        $sql = $this->db->prepare($sql);
                         $sql->bindValue(':id_share', $share['id']);
                         $sql->execute();
                     }
@@ -108,7 +117,13 @@ class Share extends model
                 $sql = $this->db->prepare($sql);
                 $sql->bindValue(':id', $share['id']);
                 $sql->execute();
+
+                rmdir('assets/img/'.$share['url']);
             }
+
+            return true;
+        } else {
+            return false;
         }
     }
 }
