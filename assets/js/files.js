@@ -45,6 +45,7 @@ function time(expires) {
   let minutesC = cDate.getMinutes();
 
   let secondsBase = 59;
+  let secondsExp = expDate.getSeconds();
   let secondsC = cDate.getSeconds();
 
   if(minutesExp < minutesC) {
@@ -53,7 +54,11 @@ function time(expires) {
     minutes = minutesExp - minutesC;
   }
 
-  seconds = secondsBase - secondsC;
+  seconds = (secondsBase - secondsC) - secondsExp;
+
+  if(seconds < 0) {
+    seconds = secondsBase - seconds;
+  }
 
   const interval = setInterval(() => {
     minutesText = `${minutes < 10 ? '0'+minutes : minutes}`;
