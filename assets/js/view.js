@@ -49,7 +49,7 @@ function time(expires) {
     }
 
     if(minutes === 0 && seconds === 0) {
-      getFiles();
+      initialize();
 
       clearInterval(interval);
     }
@@ -60,7 +60,7 @@ function initialize() {
   let code = $('#code-text').text();
 
   $.ajax({
-    url: 'ajax/delFilesDefault',
+    url: BASE+'/ajax/delFilesDefault',
     type: 'GET',
     dataType: 'json'
   });
