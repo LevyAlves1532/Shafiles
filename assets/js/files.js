@@ -55,9 +55,9 @@ function time(expires) {
   }
 
   seconds = (secondsBase - secondsC) - secondsExp;
-
+  
   if(seconds < 0) {
-    seconds = secondsBase - seconds;
+    seconds = secondsBase + seconds;
   }
 
   const interval = setInterval(() => {
