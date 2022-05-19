@@ -16,4 +16,18 @@ class filesController extends controller
 
         $this->loadTemplate('files', $data);
     }
+
+    public function view($code)
+    {
+        $data = [];
+
+        if(!empty($code)) {
+            $data['code'] = addslashes($code);
+        } else {
+            header('Location: '.BASE);
+            exit();
+        }
+
+        $this->loadTemplate('view', $data);
+    }
 }
