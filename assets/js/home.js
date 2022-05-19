@@ -109,6 +109,23 @@ $(function() {
             Alert('danger', 'Envio dos arquivos ultrapassam o limite de 100Mb');
         }
     });
+
+    $('#search-code').on('click', function() {
+        let val = $('#input-code').val();
+
+        $.ajax({
+            url: `ajax/getCode?code=${btoa(val)}`,
+            type: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                if(json.status) {
+                    window.location.href = BASE+'/files/view/'+val;
+                } else {
+                    Alert('danger', json.return)
+                }
+            }
+        });
+    })
 })
 
 function Alert(type, message) {

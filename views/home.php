@@ -32,9 +32,9 @@
 
         <div class="bottom">
             <div class="container">
-                <input type="text" class="input text" placeholder="Cole código do arquivo compartilhado com você!">
+                <input type="text" class="input text" id="input-code" placeholder="Cole código do arquivo compartilhado com você!">
 
-                <button class="btn"><i class="fas fa-search"></i></button>
+                <button class="btn" id="search-code"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </div>
