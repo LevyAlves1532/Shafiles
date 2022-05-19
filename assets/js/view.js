@@ -53,6 +53,12 @@ function time(expires) {
 
       clearInterval(interval);
     }
+
+    if(minutes < 0) {
+      initialize();
+
+      clearInterval(interval);
+    }
   }, 1000)
 }
 
