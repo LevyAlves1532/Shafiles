@@ -1,5 +1,3 @@
-const BASE = 'http://localhost/projetos/shafiles';
-
 $(function() {
   initialize();
 })
@@ -66,13 +64,13 @@ function initialize() {
   let code = $('#code-text').text();
 
   $.ajax({
-    url: BASE+'/ajax/delFilesDefault',
+    url: url+'/ajax/delFilesDefault',
     type: 'GET',
     dataType: 'json'
   });
 
   $.ajax({
-    url: BASE+`/ajax/getCode?code=${btoa(code)}`,
+    url: url+`/ajax/getCode?code=${btoa(code)}`,
     type: 'GET',
     dataType: 'json',
     success: (json) => {
@@ -80,13 +78,13 @@ function initialize() {
         time(json.return.expires);
         renderFiles(json.return.files, json.return.url);
       } else {
-        window.location.href = BASE;
+        window.location.href = url;
       }
     }
   });
 }
 
-function renderFiles(files, url) {
+function renderFiles(files, file_name) {
   if(files.length > 0) {
     let html = $('#list-files').html();
     let size = 0;
@@ -111,7 +109,7 @@ function renderFiles(files, url) {
           </div>
 
           <div class="right">
-            <a href="${BASE}/assets/img/${url}/${element.file_name}" class="btn-download" download><i class="fas fa-download"></i></a>
+            <a href="${url}/assets/img/${file_name}/${element.file_name}" class="btn-download" download><i class="fas fa-download"></i></a>
           </div>
         </div>
       `;

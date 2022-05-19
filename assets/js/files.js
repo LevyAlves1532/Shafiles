@@ -1,5 +1,3 @@
-const BASE = 'http://localhost/projetos/shafiles';
-
 $(function() {
   getFiles();
 
@@ -118,13 +116,13 @@ function getFiles() {
   let code = $('#code-text').text();
 
   $.ajax({
-    url: 'ajax/delFilesDefault',
+    url: url+'/ajax/delFilesDefault',
     type: 'GET',
     dataType: 'json'
   });
 
   $.ajax({
-    url: `ajax/getCode?code=${btoa(code)}`,
+    url: url+`/ajax/getCode?code=${btoa(code)}`,
     type: 'GET',
     dataType: 'json',
     success: (json) => {
@@ -132,7 +130,7 @@ function getFiles() {
         time(json.return.expires);
         renderFiles(json.return.files);
       } else {
-        window.location.href = BASE;
+        window.location.href = url;
       }
     }
   });
