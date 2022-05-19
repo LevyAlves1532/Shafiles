@@ -7,7 +7,7 @@ preg_match("/{$conexao}/i", $url, $match);
 
 //defininco se esta em desenvolvimento ou produção
 if (!empty($match)) {
-	define("BASE", "http://localhost/levy/shafiles/");
+	define("BASE", "http://localhost/projetos/shafiles/");
 	$config['dbname'] = 'sha_files';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';

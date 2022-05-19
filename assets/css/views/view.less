@@ -1,0 +1,254 @@
+.view {
+  width: 100%;
+  height: 120vh;
+  background-color: @--color-primary;
+
+    .content {
+        max-width: 1440px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        .top {
+            padding-top: 57px;
+            padding-bottom: 57px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .expires-area {
+                cursor: default;
+                text-align: end;
+
+                .time {
+                    margin: 0;
+                    font-weight: 400;
+                    font-size: 48px;
+                    line-height: 58px;
+                    color: #FFF;
+                }
+
+                .sub-text {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #FFF;
+                }
+            }
+        }
+
+        .middle {
+            flex: 1;
+
+            .container {
+                width: 100%;
+                height: 100%;
+                background-color: @--color-white;
+                border-radius: 10px;
+                padding: 23px;
+                box-sizing: border-box;
+                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+                display: flex;
+                flex-direction: column;
+
+                .list {
+                    flex: 1;
+                    margin-bottom: 40px;
+                    overflow-y: auto;
+
+                    .card-file {
+                        width: 100%;
+                        height: 70px;
+                        background-color: @--color-secondary;
+                        border-radius: 5px;
+                        padding: 0 20px;
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        cursor: default;
+                        margin-bottom: 20px;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        .left {
+                            width: 171px;
+                            display: flex;
+                            align-items: center;
+
+                            i {
+                                font-size: 40px;
+                                color: @--color-white;
+                                margin-right: 10px;
+                            }
+
+                            .title {
+                                font-size: 16px;
+                                color: @--color-white;
+                                margin: 0;
+                            }
+                        }
+
+                        .middle {
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+
+                            .text {
+                                font-size: 16px;
+                                color: @--color-white;
+                            }
+                        }
+
+                        .right {
+                            .btn-download {
+                                font-size: 40px;
+                                text-decoration: none;
+                                color: @--color-white;
+                            }
+                        }
+                    }
+                }
+
+                .size-area {
+                    width: 100%;
+                    text-align: end;
+
+                    .size {
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: @--color-primary;
+                        cursor: default;
+
+                        .f-m {
+                            font-size: 22px;
+                        }
+
+                        .f-b {
+                            font-size: 32px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .bottom {
+            width: 100%;
+            padding-top: 83px;
+            padding-bottom: 51px;
+
+            .container {
+               text-align: center;
+
+                .title {
+                   font-weight: 400;
+                   font-size: 16px;
+                   text-transform: uppercase;
+                   line-height: 19px;
+                   color: #FFF;
+                   margin: 0;
+                   cursor: default;
+                }
+
+                .code {
+                    font-weight: 400;
+                    font-size: 28px;
+                    line-height: 34px;
+                    color: #FFF;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .view {
+        .content {
+            max-width: 1024px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .view {
+        .content {
+            max-width: 768px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .view {
+        height: auto;
+        min-height: 100vh;
+
+        .content {
+            max-width: 425px;
+
+            .top {
+                display: flex;
+            }
+
+            .middle {
+                height: auto;
+                flex: unset;
+            }
+
+            .bottom {
+                .container {
+                    .code {
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .view {
+        .content {
+            padding: 0 20px;
+            box-sizing: border-box;
+
+            .middle {
+                .container {
+                    .list {
+                        .card-file {
+                            justify-content: space-between;
+                            
+                            .middle {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .view {
+        .content {
+            .top {
+                .expires-area {
+                    .time {
+                        font-size: 38px;
+                        line-height: 48px;
+                    }
+
+                    .sub-text {
+                        font-size: 12px;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
