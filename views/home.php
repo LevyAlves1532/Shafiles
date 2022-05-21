@@ -38,6 +38,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal-area" id="modal-warning">
+        <h1 class="title">Seja Bem-Vindo ao ShaFile</h1>
+
+        <p class="text">
+            O ShaFile é uma aplicação feita para o compartilhamento de arquivos,
+            pedimos por gentileza para que não compartilhe nenhum tipo de arquivo
+            que possa prejudicar a o usuario que irá recebe-lo. 
+        </p>
+
+        <p class="sub-text">
+            Atenção: utilize códigos somente de pessoas que você conhece
+            cuidado a o fazer o download e instalação de algum arquivo.
+        </p>
+
+        <button class="btn-warning" id="btn-warning">
+            Estou pronto para usar!
+        </button>
+    </div>
+
+    <div class="background" id="background-warning"></div>
 </div>
 
 <script defer src="<?= BASE ?>assets/js/home.js"></script>

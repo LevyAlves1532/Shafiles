@@ -134,6 +134,19 @@ function initialize() {
         type: 'GET',
         dataType: 'json'
     });
+
+    if(!window.localStorage.getItem('access')) {
+        let access = 1;
+
+        setTimeout(() => {
+            $('#modal-warning').addClass('active');
+            $('#background-warning').addClass('active');
+            $('#background-warning').on('click', hideModal);
+            $('#btn-warning').on('click', hideModal);
+        }, 2000)
+
+        window.localStorage.setItem('access', btoa(JSON.stringify(access)));
+    }
 }
 
 function Alert(type, message) {
@@ -198,4 +211,9 @@ function renderFiles(files) {
         $('#send-form').css('display', 'block');
         $('#list-files').css('display', 'block');
     }
+}
+
+function hideModal() {
+    $('#modal-warning').removeClass('active');
+    $('#background-warning').removeClass('active');
 }
