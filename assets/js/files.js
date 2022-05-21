@@ -76,6 +76,8 @@ function time(expires) {
       getFiles();
 
       clearInterval(interval);
+
+      return;
     }
   }, 1000)
 }
