@@ -33,6 +33,7 @@
 
     <!-- AQUI COLOCAREMOS O FOOTER -->
     <script src="<?= BASE ?>assets/js/libs/less.js"></script>
+    <script src="<?= BASE ?>assets/js/scripts.js"></script>
 
 </body>
 

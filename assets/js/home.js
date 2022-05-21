@@ -1,9 +1,9 @@
-const BASE = 'http://localhost/projetos/shafiles'; 
-
 $(function() {
     let files;
     let filesTop ;
     let filesSize = 0;
+
+    initialize();
 
     $('#form-upload').on('submit', function(e) {
         e.preventDefault();
@@ -11,7 +11,7 @@ $(function() {
         let formData = new FormData(this);
 
         $.ajax({
-            url: 'ajax/uploadFiles',
+            url: url+'/ajax/uploadFiles',
             type: 'POST',
             data: formData,
             dataType: 'json',
@@ -22,7 +22,7 @@ $(function() {
                     Alert('success', 'Arquivos enviados com sucesso!');
 
                     setTimeout(() => {
-                        window.location.href = BASE+'/files?code='+json.return;
+                        window.location.href = url+'/files?code='+json.return;
                     }, 2000)
                 } else {
                     Alert('danger', json.return);
@@ -114,12 +114,12 @@ $(function() {
         let val = $('#input-code').val();
 
         $.ajax({
-            url: `ajax/getCode?code=${btoa(val)}`,
+            url: url+`/ajax/getCode?code=${btoa(val)}`,
             type: 'GET',
             dataType: 'json',
             success: (json) => {
                 if(json.status) {
-                    window.location.href = BASE+'/files/view/'+val;
+                    window.location.href = url+'/files/view/'+val;
                 } else {
                     Alert('danger', json.return)
                 }
@@ -127,6 +127,27 @@ $(function() {
         });
     })
 })
+
+function initialize() {
+    $.ajax({
+        url: url+'/ajax/delFilesDefault',
+        type: 'GET',
+        dataType: 'json'
+    });
+
+    if(!window.localStorage.getItem('access')) {
+        let access = 1;
+
+        setTimeout(() => {
+            $('#modal-warning').addClass('active');
+            $('#background-warning').addClass('active');
+            $('#background-warning').on('click', hideModal);
+            $('#btn-warning').on('click', hideModal);
+        }, 2000)
+
+        window.localStorage.setItem('access', btoa(JSON.stringify(access)));
+    }
+}
 
 function Alert(type, message) {
     switch(type) {
@@ -190,4 +211,9 @@ function renderFiles(files) {
         $('#send-form').css('display', 'block');
         $('#list-files').css('display', 'block');
     }
+}
+
+function hideModal() {
+    $('#modal-warning').removeClass('active');
+    $('#background-warning').removeClass('active');
 }
