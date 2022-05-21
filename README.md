@@ -14,7 +14,7 @@
     <li><strong>host:</strong> Host do MySQL</li>
     <li><strong>dbuser:</strong> Nome do usuário configurado no seu MySQL (Por padrão vem: root)</li>
     <li><strong>dbpass:</strong> Senha do usuário configurado no seu MySQL (Por padrão vem vázio)</li>
-    <li>Nos arquivos js altere as constantes BASE</li>
+    <li>Nos arquivos js altere as variaveis de url</li>
 </ul>
 
 <code>
